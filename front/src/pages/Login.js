@@ -15,7 +15,7 @@ const Login = () => {
       <BackgroundMenu />
       <div className={styles.accountOptions}>
         <div className={styles.div}>
-          비밀번호 찾기 ㅣ 아이디 찾기 ㅣ 회원가입
+          회원가입
         </div>
       </div>
     </div>
