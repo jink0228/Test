@@ -8,18 +8,46 @@
   display: none;
   max-width: 100%;
 }
-.unionIcon {
+.unionIconID {
   width: 100%;
   height: 100%;
   position: absolute;
   margin: 0 !important;
-  top: 0;
+  top: -16px;
   right: 6px;
   bottom: 0;
   left: 0;
-  max-width: 100%;
+  max-width: 97%;
   overflow: hidden;
-  max-height: 100%;
+  max-height: 70%;
+  z-index: 1;
+}
+.unionIconPW {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0 !important;
+  top: 32px;
+  right: 6px;
+  bottom: 0;
+  left: 0;
+  max-width: 97%;
+  overflow: hidden;
+  max-height: 70%;
+  z-index: 1;
+}
+.unionIconLogin {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0 !important;
+  top: 32px;
+  right: 6px;
+  bottom: 0;
+  left: 0;
+  max-width: 97%;
+  overflow: hidden;
+  max-height: 70%;
   z-index: 1;
 }
 .div,
