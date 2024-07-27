@@ -1,17 +1,22 @@
 import PropTypes from "prop-types";
 import styles from "./BackgroundMenu.module.css";
 import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 const BackgroundMenu = ({ className = "" }) => {
 
   const [userID, setuserID] = useState("");
   const [userPW, setuserPW] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
     console.log("ID : ", userID);
     console.log("PW : ", userPW);
-    //여기서 DB로 데이터 보내는 등의 나머지 처리함
+    //여기서 DB로 데이터 보내고 비교 등, 나머지 처리함
+    //로그인 성공하면
+
+    navigate("/welcome"); //이동
   }
 
   return (
