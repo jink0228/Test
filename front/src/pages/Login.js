@@ -8,7 +8,7 @@ const Login = () => {
   //회원가입 페이지로 이동
   function handleSignupClick() {
     console.log("sign up");
-    //navigate('/signup');  
+    navigate('/join');
   }
 
   return (
