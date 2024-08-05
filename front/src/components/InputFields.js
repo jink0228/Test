@@ -21,7 +21,7 @@ const InputFields = ({ className = "" }) => {
     //비동기 처리(async)
     try {
       const response = await axios({
-        url: "test/axiosTest.do",
+        url: "/api/members/register",
         method: "post",
         data: {
           userID,
