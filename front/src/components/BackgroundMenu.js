@@ -19,6 +19,7 @@ const BackgroundMenu = ({ className = "" }) => {
           username: userID,
           password: userPW,
         },
+        withCredentials: true, //쿠키 전송
         baseURL: "http://localhost:8080",
       });
 
