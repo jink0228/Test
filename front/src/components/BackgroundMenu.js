@@ -1,3 +1,6 @@
+/**
+ * 로그인 페이지로 이동했을 때 컴포넌트
+ */
 import PropTypes from "prop-types";
 import styles from "./BackgroundMenu.module.css";
 import { useState } from "react";

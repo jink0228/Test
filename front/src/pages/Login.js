@@ -1,3 +1,6 @@
+/*
+ * 로그인 하는 페이지
+ */
 import BackgroundMenu from "../components/BackgroundMenu";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";

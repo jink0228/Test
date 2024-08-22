@@ -1,3 +1,6 @@
+/**
+ * 회원가입 페이지로 이동했을때 서식 넣는 UI
+ */
 import PropTypes from "prop-types";
 import { useState } from "react";
 import styles from "./InputFields.module.css";
