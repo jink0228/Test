@@ -135,6 +135,9 @@
   color: var(--color-darkslategray-300);
   font-family: var(--font-inter);
 }
+.whatIwrote {
+  cursor: pointer;
+}
 @media screen and (max-width: 450px) {
   .loginMessageParent {
     padding-left: var(--padding-xl);

@@ -13,16 +13,28 @@ const LoginMessage = ({ className = "", isLoggedIn, userInfo }) => {
     navigate("/login");
   }
 
+  /**
+   * '내가 쓴 글'누르면 페이지 이동
+   */
+  function handleMyWrote() {}
+
   let loginContent;
 
   if (isLoggedIn) {
-    loginContent = (
-      <div>
-        <p>안녕하세요, {userInfo.nickname} 님!</p>
-        <p>트랙1 : {userInfo.track1}</p>
-        <p>트랙2 : {userInfo.track2}</p>
+    <div className={[styles.loginMessage, className].join(" ")}>
+      <div className={styles.div} />
+      <div className={styles.loginMessageParent}>
+        <div className={styles.div1}>
+          <p className={styles.p}>안녕하세요 {userInfo.nickname} 님!</p>
+          <br></br>
+          <p className={styles.p}>1트랙 : {userInfo.track1}</p>
+          <p className={styles.p}>2트랙 : {userInfo.track2}</p>
+        </div>
       </div>
-    );
+      <div className={styles.whatIwrote} onClick={handleMyWrote}>
+        내가 쓴 글
+      </div>
+    </div>;
   } else {
     loginContent = (
       <div className={[styles.loginMessage, className].join(" ")}>
@@ -44,33 +56,16 @@ const LoginMessage = ({ className = "", isLoggedIn, userInfo }) => {
   }
 
   return <div>{loginContent}</div>;
-
-  /*
-  return (
-    <div className={[styles.loginMessage, className].join(" ")}>
-      <div className={styles.div} />
-      <div className={styles.loginMessageParent}>
-        <div className={styles.div1}>
-          <p className={styles.p}>원활한 사용을 위해</p>
-          <p className={styles.p}>로그인 후 이용 가능합니다.</p>
-        </div>
-      </div>
-      <div className={styles.loginButtons}>
-        <button className={styles.loginButton}>
-          <div
-            className={styles.loginButtonBackground}
-            onClick={onLoginButtonBackgroundClick}
-          />
-          <div className={styles.div2}>로그인</div>
-        </button>
-      </div>
-    </div>
-  );
-  */
 };
 
 LoginMessage.propTypes = {
   className: PropTypes.string,
+  isLoggedIn: PropTypes.bool.isRequired,
+  userInfo: PropTypes.shape({
+    nickname: PropTypes.string.isRequired,
+    track1: PropTypes.string.isRequired,
+    track2: PropTypes.string.isRequired,
+  }),
 };
 
 export default LoginMessage;
