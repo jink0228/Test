@@ -13,7 +13,7 @@ export async function getUserInfo() {
   try {
     const response = await axios.get("/api/members/register", {
       headers: {
-        Authorization: "Bearer ${token}",
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;

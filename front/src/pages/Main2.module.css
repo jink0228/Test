@@ -186,6 +186,7 @@
 .navbarItemsChild {
   border-radius: var(--br-mini);
   border: 1px solid var(--color-darkslateblue-200);
+  cursor: pointer;
 }
 .monthWeeks2 {
   align-self: stretch;
@@ -240,6 +241,7 @@
   padding: var(--padding-3xs) var(--padding-base);
   gap: var(--gap-5xl);
   z-index: 1;
+  cursor: pointer;
 }
 .icroundFolderIcon {
   height: 32px;
@@ -256,6 +258,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: var(--padding-6xs) 0 0;
+  cursor: pointer;
 }
 .calendar {
   cursor: pointer;
@@ -290,6 +293,7 @@
   align-items: flex-start;
   justify-content: flex-end;
   padding: 0 0 var(--padding-6xs);
+  cursor: pointer;
 }
 .loginButtonContainer {
   cursor: pointer;
@@ -341,6 +345,7 @@
   padding: var(--padding-2xs) var(--padding-mid);
   gap: var(--gap-4xl);
   z-index: 1;
+  cursor: pointer;
 }
 .carbonloadBalancerGlobalIcon {
   height: 27px;
@@ -357,6 +362,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: var(--padding-9xs) 0 0;
+  cursor: pointer;
 }
 .navbarItems2 {
   cursor: pointer;

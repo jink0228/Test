@@ -7,10 +7,6 @@ import LoginMessage from "../components/LoginMessage";
 import styles from "./Main2.module.css";
 
 const Main = () => {
-  const onLoginButtonClick = useCallback(() => {
-    // Please sync "login" to the project
-  }, []);
-
   return (
     <div className={styles.main}>
       <main className={styles.frameParent}>
@@ -53,7 +49,7 @@ const Main = () => {
                     <div className={styles.div6}>홈</div>
                   </div>
                 </div>
-                <button className={styles.calendar}>
+                <div className={styles.calendar}>
                   <div className={styles.monthWeeksChild} />
                   <img
                     className={styles.icroundFolderIcon}
@@ -65,8 +61,8 @@ const Main = () => {
                       프로젝트 공유 게시판
                     </div>
                   </div>
-                </button>
-                <button className={styles.loginButtonContainer}>
+                </div>
+                <div className={styles.loginButtonContainer}>
                   <div className={styles.monthWeeksChild} />
                   <img
                     className={styles.humbleiconschat}
@@ -78,7 +74,7 @@ const Main = () => {
                       Coveloper Chatbot
                     </div>
                   </div>
-                </button>
+                </div>
                 <div className={styles.monthWeeks3}>
                   <div className={styles.monthWeeksChild} />
                   <img
@@ -92,7 +88,7 @@ const Main = () => {
                     type="text"
                   />
                 </div>
-                <button className={styles.navbarItems2}>
+                <div className={styles.navbarItems2}>
                   <div className={styles.monthWeeksChild} />
                   <img
                     className={styles.carbonloadBalancerGlobalIcon}
@@ -104,7 +100,7 @@ const Main = () => {
                       비전공자 추천 로드맵
                     </div>
                   </div>
-                </button>
+                </div>
               </div>
             </div>
           </div>

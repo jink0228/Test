@@ -8,7 +8,6 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import Login from "./pages/Login";
-import Welcome from "./Welcom";
 import Join from "./pages/Join";
 import Main from "./pages/Main2";
 import { getUserInfo, isLoggedIn, logout } from "./utils/auth";
@@ -53,10 +52,12 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
+    //처음 메인 페이지 로드 시
     if (isLoggedIn()) {
-      getUserInfo()
+      //로그인 되어있는지 확인, 로그인 한 상태면
+      getUserInfo() //사용자 정보 가져옴
         .then((data) => {
-          setUserInfo(data);
+          setUserInfo(data); //userInfo업데이트
         })
         .catch((error) => {
           console.error("Failed to fetch user info", error);
