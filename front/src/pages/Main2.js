@@ -5,8 +5,36 @@
 import { useCallback } from "react";
 import LoginMessage from "../components/LoginMessage";
 import styles from "./Main2.module.css";
+import { useNavigate } from "react-router-dom";
+import AllPostsContent from "../components/AllPostsContent";
+import HomeContent from "../components/HomeContent";
+import { useState } from "react";
 
 const Main = () => {
+  const [selectedMenu, setSelectedMenu] = useState("홈");
+  const navigate = useNavigate();
+
+  function onClickAllWrote() {
+    console.log("전체글 클릭");
+    setSelectedMenu("전체 글");
+  }
+
+  function onClickHome() {
+    console.log("홈으로 이동");
+    setSelectedMenu("홈");
+  }
+
+  function renderContent() {
+    switch (selectedMenu) {
+      case "전체 글":
+        return <AllPostsContent />;
+      case "홈":
+        return <HomeContent />;
+      default:
+        return <HomeContent />;
+    }
+  }
+
   return (
     <div className={styles.main}>
       <main className={styles.frameParent}>
@@ -26,7 +54,8 @@ const Main = () => {
             <div className={styles.chatMessages}>
               <LoginMessage />
               <div className={styles.monthWeeksGroup}>
-                <div className={styles.monthWeeks2}>
+                <div className={styles.monthWeeks2} onClick={onClickAllWrote}>
+                  {/**전체글 버튼 */}
                   <div className={styles.monthWeeksChild} />
                   <img
                     className={styles.f7houseFillIcon}
@@ -38,7 +67,8 @@ const Main = () => {
                     <div className={styles.div5}>전체 글</div>
                   </div>
                 </div>
-                <div className={styles.navbarItems1}>
+                <div className={styles.navbarItems1} onClick={onClickHome}>
+                  {/**홈 버튼 */}
                   <div className={styles.navbarItemsChild} />
                   <img
                     className={styles.f7houseFillIcon1}
@@ -50,6 +80,7 @@ const Main = () => {
                   </div>
                 </div>
                 <div className={styles.calendar}>
+                  {/**프로젝트 공유게시판 버튼 */}
                   <div className={styles.monthWeeksChild} />
                   <img
                     className={styles.icroundFolderIcon}
@@ -63,6 +94,7 @@ const Main = () => {
                   </div>
                 </div>
                 <div className={styles.loginButtonContainer}>
+                  {/**챗봇 게시판 버튼 */}
                   <div className={styles.monthWeeksChild} />
                   <img
                     className={styles.humbleiconschat}
@@ -89,6 +121,8 @@ const Main = () => {
                   />
                 </div>
                 <div className={styles.navbarItems2}>
+                  {" "}
+                  {/**비전공자 추천 로드맵 버튼 */}
                   <div className={styles.monthWeeksChild} />
                   <img
                     className={styles.carbonloadBalancerGlobalIcon}
@@ -105,6 +139,8 @@ const Main = () => {
             </div>
           </div>
           <div className={styles.frameWrapper}>
+            {renderContent()}
+            {/*
             <div className={styles.navbarItemsGroup}>
               <div className={styles.navbarItems3}>
                 <div className={styles.rectangleDiv} />
@@ -124,6 +160,7 @@ const Main = () => {
               </div>
               <textarea className={styles.frameChild} rows={17} cols={36} />
             </div>
+            */}
           </div>
         </section>
         <div className={styles.frameContainer}>
