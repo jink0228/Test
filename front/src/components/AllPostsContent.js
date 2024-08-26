@@ -1,5 +1,5 @@
 /**
- * 전체 글 게시판
+ * 전체 글 게시판(예진)
  */
 import React from "react";
 
