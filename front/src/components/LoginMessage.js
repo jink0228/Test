@@ -13,28 +13,25 @@ const LoginMessage = ({ className = "", isLoggedIn, userInfo }) => {
     navigate("/login");
   }
 
-  /**
-   * '내가 쓴 글'누르면 페이지 이동
-   */
-  function handleMyWrote() {}
-
   let loginContent;
 
   if (isLoggedIn) {
-    <div className={[styles.loginMessage, className].join(" ")}>
-      <div className={styles.div} />
-      <div className={styles.loginMessageParent}>
-        <div className={styles.div1}>
-          <p className={styles.p}>안녕하세요 {userInfo.nickname} 님!</p>
-          <br></br>
-          <p className={styles.p}>1트랙 : {userInfo.track1}</p>
-          <p className={styles.p}>2트랙 : {userInfo.track2}</p>
+    loginContent = (
+      <div className={[styles.loginMessage, className].join(" ")}>
+        <div className={styles.div} />
+        <div className={styles.loginMessageParent}>
+          <div className={styles.div1}>
+            <p className={styles.p}>안녕하세요 {userInfo.nickname} 님!</p>
+            <br></br>
+            <p className={styles.p}>1트랙 : {userInfo.track1}</p>
+            <p className={styles.p}>2트랙 : {userInfo.track2}</p>
+          </div>
+        </div>
+        <div className={styles.whatIwrote} onClick={handleMyWrote}>
+          내가 쓴 글
         </div>
       </div>
-      <div className={styles.whatIwrote} onClick={handleMyWrote}>
-        내가 쓴 글
-      </div>
-    </div>;
+    );
   } else {
     loginContent = (
       <div className={[styles.loginMessage, className].join(" ")}>
