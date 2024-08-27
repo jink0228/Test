@@ -24,6 +24,11 @@ const Main = () => {
     setSelectedMenu("홈");
   }
 
+  function onClickQnA() {
+    console.log("QnA게시판으로 이동");
+    setSelectedMenu("QnA");
+  }
+
   function renderContent() {
     switch (selectedMenu) {
       case "전체 글":
@@ -77,6 +82,17 @@ const Main = () => {
                   />
                   <div className={styles.container}>
                     <div className={styles.div6}>홈</div>
+                  </div>
+                </div>
+                <div className={styles.calendar} onClick={onClickQnA}>
+                  <div className={styles.monthWeeksChild} />
+                  <img
+                    className={styles.icroundFolderIcon}
+                    alt=""
+                    stc="/icsharpsearch1.svg"
+                  />
+                  <div className={styles.frame}>
+                    <div className={styles.coveloperChatbot}>QnA</div>
                   </div>
                 </div>
                 <div className={styles.calendar}>
