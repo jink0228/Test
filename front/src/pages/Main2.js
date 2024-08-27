@@ -8,11 +8,11 @@ import styles from "./Main2.module.css";
 import { useNavigate } from "react-router-dom";
 import AllPostsContent from "../components/AllPostsContent";
 import HomeContent from "../components/HomeContent";
+import QnAContent from "../components/QnAContent";
 import { useState } from "react";
 
 const Main = () => {
   const [selectedMenu, setSelectedMenu] = useState("홈");
-  const navigate = useNavigate();
 
   function onClickAllWrote() {
     console.log("전체글 클릭");
@@ -35,6 +35,8 @@ const Main = () => {
         return <AllPostsContent />;
       case "홈":
         return <HomeContent />;
+      case "QnA":
+        return <QnAContent />;
       default:
         return <HomeContent />;
     }
@@ -85,6 +87,7 @@ const Main = () => {
                   </div>
                 </div>
                 <div className={styles.calendar} onClick={onClickQnA}>
+                  {/*QnA게시판*/}
                   <div className={styles.monthWeeksChild} />
                   <img
                     className={styles.icroundFolderIcon}
