@@ -29,7 +29,7 @@ const BackgroundMenu = ({ className = "" }) => {
       if (response.data) {
         console.log("로그인 성공");
         //로그인 성공 시, 메인페이지로 이동
-        navigate("/welcome");
+        navigate("/");
       } else {
         console.log("로그인 실패");
         alert(response.data.message);
