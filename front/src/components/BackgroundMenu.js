@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const BackgroundMenu = ({ className = "" }) => {
+const BackgroundMenu = ({ className = "", onLoginSuccess }) => {
   const [userID, setuserID] = useState("");
   const [userPW, setuserPW] = useState("");
 
@@ -26,10 +26,10 @@ const BackgroundMenu = ({ className = "" }) => {
         baseURL: "http://localhost:8080",
       });
 
-      if (response.data) {
+      if (response.data.token) {
         console.log("로그인 성공");
-        //로그인 성공 시, 메인페이지로 이동
-        navigate("/");
+        //로그인 성공 시, App.js의 handleLoginSuccess함수 호출
+        onLoginSuccess(response.data.token); //App.js로 토큰 전달해줌, 그러면 handleLoginSuccess함수에서 메인페이지로 리다이렉션 해줌
       } else {
         console.log("로그인 실패");
         alert(response.data.message);
@@ -44,7 +44,7 @@ const BackgroundMenu = ({ className = "" }) => {
     event.preventDefault();
     console.log("ID : ", userID);
     console.log("PW : ", userPW);
-    sendUserIDPW(); //DB로 데이터 보냄
+    sendUserIDPW(); //DB로 데이터 보냄(로그인 요청 보냄)
   }
 
   return (
