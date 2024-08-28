@@ -6,6 +6,7 @@ import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ onLoginSuccess }) => {
+  console.log("onLoginSuccess prop received: ", onLoginSuccess);
   const navigate = useNavigate();
 
   //회원가입 페이지로 이동

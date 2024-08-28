@@ -76,12 +76,18 @@ function App() {
 
   //
   function handleLoginSuccess(token) {
+    console.log("Token received : ", token);
     localStorage.setItem("token", token); //브라우저에 토큰 저장
-    getUserInfo().then((data) => {
-      //서버로부터 사용자 정보 가져옴
-      setUserInfo(data); //가져온 정보를 userInfo에 저장
-      navigate("/"); //로그인 성공 후 메인페이지로 리다이렉션
-    });
+    getUserInfo()
+      .then((data) => {
+        console.log("User info : ", data);
+        //서버로부터 사용자 정보 가져옴
+        setUserInfo(data); //가져온 정보를 userInfo에 저장
+        navigate("/"); //로그인 성공 후 메인페이지로 리다이렉션
+      })
+      .catch((error) => {
+        console.error("Error fetching user info : ", error);
+      });
   }
 
   return (

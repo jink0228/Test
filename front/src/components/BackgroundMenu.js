@@ -26,6 +26,9 @@ const BackgroundMenu = ({ className = "", onLoginSuccess }) => {
         baseURL: "http://localhost:8080",
       });
 
+      console.log("Response data: ", response.data);
+      console.log("Token : ", response.data.token);
+
       if (response.data.token) {
         console.log("로그인 성공");
         if (onLoginSuccess) {
