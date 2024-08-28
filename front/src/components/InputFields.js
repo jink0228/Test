@@ -27,7 +27,7 @@ const InputFields = ({ className = "" }) => {
         url: "/api/members/register",
         method: "post",
         data: {
-          username: userID,
+          email: userID,
           password: userPW1,
           nickname: userNickName,
           name: userName,

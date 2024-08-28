@@ -16,10 +16,10 @@ const BackgroundMenu = ({ className = "", onLoginSuccess }) => {
   async function sendUserIDPW() {
     try {
       const response = await axios({
-        url: "/api/members/register",
+        url: "/api/members/login",
         method: "post",
         data: {
-          username: userID,
+          email: userID,
           password: userPW,
         },
         withCredentials: true, //쿠키 전송

@@ -4,6 +4,7 @@
 import BackgroundMenu from "../components/BackgroundMenu";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
+import handleLoginSuccess from "../App";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Login = () => {
           </a>
         </div>
       </div>
-      <BackgroundMenu />
+      <BackgroundMenu onLoginSuccess={handleLoginSuccess} />
       <div className={styles.accountOptions}>
         <div className={styles.signup} onClick={handleSignupClick}>
           회원가입
