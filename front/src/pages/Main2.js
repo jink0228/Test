@@ -8,28 +8,25 @@ import styles from "./Main2.module.css";
 import { useNavigate } from "react-router-dom";
 import AllPostsContent from "../components/AllPostsContent";
 import HomeContent from "../components/HomeContent";
+import QnAContent from "../components/QnAContent";
 import { useState } from "react";
 
 const Main = () => {
   const [selectedMenu, setSelectedMenu] = useState("홈");
-  const navigate = useNavigate();
 
-  function onClickAllWrote() {
-    console.log("전체글 클릭");
-    setSelectedMenu("전체 글");
-  }
-
-  function onClickHome() {
-    console.log("홈으로 이동");
-    setSelectedMenu("홈");
+  function handleMenuClick(menuName) {
+    console.log(`${menuName} 클릭`);
+    setSelectedMenu(menuName);
   }
 
   function renderContent() {
     switch (selectedMenu) {
-      case "전체 글":
+      case "전체글":
         return <AllPostsContent />;
       case "홈":
         return <HomeContent />;
+      case "QnA":
+        return <QnAContent />;
       default:
         return <HomeContent />;
     }
@@ -54,7 +51,10 @@ const Main = () => {
             <div className={styles.chatMessages}>
               <LoginMessage />
               <div className={styles.monthWeeksGroup}>
-                <div className={styles.monthWeeks2} onClick={onClickAllWrote}>
+                <div
+                  className={styles.monthWeeks2}
+                  onClick={() => handleMenuClick("전체글")}
+                >
                   {/**전체글 버튼 */}
                   <div className={styles.monthWeeksChild} />
                   <img
@@ -67,7 +67,10 @@ const Main = () => {
                     <div className={styles.div5}>전체 글</div>
                   </div>
                 </div>
-                <div className={styles.navbarItems1} onClick={onClickHome}>
+                <div
+                  className={styles.navbarItems1}
+                  onClick={() => handleMenuClick("홈")}
+                >
                   {/**홈 버튼 */}
                   <div className={styles.navbarItemsChild} />
                   <img
@@ -77,6 +80,21 @@ const Main = () => {
                   />
                   <div className={styles.container}>
                     <div className={styles.div6}>홈</div>
+                  </div>
+                </div>
+                <div
+                  className={styles.calendar}
+                  onClick={() => handleMenuClick("QnA")}
+                >
+                  {/*QnA게시판*/}
+                  <div className={styles.monthWeeksChild} />
+                  <img
+                    className={styles.icroundFolderIcon}
+                    alt=""
+                    stc="/icsharpsearch1.svg"
+                  />
+                  <div className={styles.frame}>
+                    <div className={styles.coveloperChatbot}>QnA</div>
                   </div>
                 </div>
                 <div className={styles.calendar}>

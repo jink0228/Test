@@ -10,7 +10,14 @@ import {
 import Login from "./pages/Login";
 import Join from "./pages/Join";
 import Main from "./pages/Main2";
+import WriteQnAPost from "./pages/QnAWrite";
+
 import { getUserInfo, isLoggedIn, logout } from "./utils/auth";
+/**
+ * getUserInfo() : 토큰제출하고, 사용자 정보 가져옴
+ * isLoggedIn() : localStorage에(쿠키) 토큰 있는지 확인
+ * logout() : localStorage에서 토큰 제거
+ */
 
 function App() {
   const action = useNavigationType();
@@ -67,11 +74,13 @@ function App() {
     }
   }, []);
 
+  //
   function handleLoginSuccess(token) {
-    localStorage.setItem("token", token);
+    localStorage.setItem("token", token); //브라우저에 토큰 저장
     getUserInfo().then((data) => {
-      setUserInfo(data);
-      navigate("/");
+      //서버로부터 사용자 정보 가져옴
+      setUserInfo(data); //가져온 정보를 userInfo에 저장
+      navigate("/"); //로그인 성공 후 메인페이지로 리다이렉션
     });
   }
 
@@ -86,6 +95,7 @@ function App() {
         path="/login"
         element={<Login onLoginSuccess={handleLoginSuccess} />}
       />
+      <Route path="/writeqna" element={<WriteQnAPost />} />
     </Routes>
   );
 }
