@@ -28,8 +28,11 @@ const BackgroundMenu = ({ className = "", onLoginSuccess }) => {
 
       if (response.data.token) {
         console.log("로그인 성공");
-        //로그인 성공 시, App.js의 handleLoginSuccess함수 호출
-        onLoginSuccess(response.data.token); //App.js로 토큰 전달해줌, 그러면 handleLoginSuccess함수에서 메인페이지로 리다이렉션 해줌
+        if (onLoginSuccess) {
+          onLoginSuccess(response.data.token); //App.js로 토큰 전달해줌, 그러면 handleLoginSuccess함수에서 메인페이지로 리다이렉션 해줌
+        } else {
+          alert("onLoginSuccess is undefined");
+        }
       } else {
         console.log("로그인 실패");
         alert(response.data.message);
