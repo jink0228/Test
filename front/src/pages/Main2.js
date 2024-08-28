@@ -114,14 +114,14 @@ const Main = () => {
                     alt=""
                     src="/ricodeboxfill1.svg"
                   />
-                  <input
-                    className={styles.monthWeeksInner}
-                    placeholder="협업 도구"
-                    type="text"
-                  />
+                  <div className={styles.monthWeeksInner}>
+                    <div className={styles.coveloperChatbot}>
+                    협업 도구
+                    </div>
+                  </div>
                 </div>
                 <div className={styles.navbarItems2}>
-                  {" "}
+                  {/*" "*/}
                   {/**비전공자 추천 로드맵 버튼 */}
                   <div className={styles.monthWeeksChild} />
                   <img

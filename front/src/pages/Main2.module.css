@@ -332,6 +332,7 @@
   font-family: var(--font-inter);
   font-size: var(--font-size-mini);
   color: var(--color-darkslateblue-200);
+  white-space: nowrap;
 }
 .monthWeeks3 {
   align-self: stretch;
