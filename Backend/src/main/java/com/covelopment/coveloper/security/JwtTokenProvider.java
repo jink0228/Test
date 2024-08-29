@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
+
 import javax.crypto.SecretKey;
 import java.util.Base64;
 import java.util.Date;
@@ -50,7 +51,9 @@ public class JwtTokenProvider {
                 .signWith(key, SignatureAlgorithm.HS256)  // HMAC SHA-256 알고리즘으로 서명
                 .compact();  // JWT 문자열 반환
     }
+
     public boolean validateToken(String token) {
+        System.out.println("Token : " + token);
         // JWT 토큰 유효성 검사
         try {
             Jwts.parserBuilder()
