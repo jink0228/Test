@@ -26,7 +26,7 @@ const BackgroundMenu = ({ className = "", onLoginSuccess }) => {
         baseURL: "http://localhost:8080",
       });
 
-      const token =
+      let token =
         response.headers["Authorization"] || response.headers["authorization"];
 
       console.log("Response headers : ", response.headers);

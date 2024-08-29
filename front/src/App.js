@@ -77,7 +77,14 @@ function App() {
   //
   function handleLoginSuccess(token) {
     console.log("Token received : ", token);
-    localStorage.setItem("token", token); //브라우저에 토큰 저장
+
+    // Bearer 제거
+    if (token.startsWith("Bearer ")) {
+      token = token.substring(7); // 'Bearer ' 제거
+    }
+
+    localStorage.setItem("token", token); //순수 JWT토큰 브라우저 저장
+
     getUserInfo()
       .then((data) => {
         console.log("User info : ", data);
