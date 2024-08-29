@@ -27,6 +27,7 @@ const BackgroundMenu = ({ className = "", onLoginSuccess }) => {
       });
 
       console.log("Response data: ", response.data);
+      console.log("Response headers : ", response.headers);
       console.log("Token : ", response.data.token);
 
       if (response.data.token) {

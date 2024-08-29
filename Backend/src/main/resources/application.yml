@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/coveloper_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: coveloper_user
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret-key: wG8kL6hQW3wG7jA2K9mY9lZqR6oF5tVhD8pB7jR5F9kD6hZ4A6oH4fF2K3wM7sD  # 256-bit 비밀키(Base64로 인코딩된 문자열)
