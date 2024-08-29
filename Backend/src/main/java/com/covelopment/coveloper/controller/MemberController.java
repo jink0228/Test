@@ -19,12 +19,14 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "Authorization")
     @PostMapping("/register")
     public ResponseEntity<Member> registerMember(@Validated @RequestBody MemberDTO memberDTO) {
         Member registeredMember = memberService.registerMember(memberDTO);
         return ResponseEntity.ok(registeredMember);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "Authorization")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody MemberDTO memberDTO, HttpServletResponse response) {
         try {
@@ -36,6 +38,8 @@ public class MemberController {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
     }
+
+    @CrossOrigin(origins = "http://localhost:3000", exposedHeaders = "Authorization")
     @GetMapping("/profile")
     public ResponseEntity<Member> getProfile(@RequestHeader("Authorization") String token) {
         System.out.println("getProfile 실행");

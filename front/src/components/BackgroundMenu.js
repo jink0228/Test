@@ -26,20 +26,23 @@ const BackgroundMenu = ({ className = "", onLoginSuccess }) => {
         baseURL: "http://localhost:8080",
       });
 
-      console.log("Response data: ", response.data);
-      console.log("Response headers : ", response.headers);
-      console.log("Token : ", response.data.token);
+      const token =
+        response.headers["Authorization"] || response.headers["authorization"];
 
-      if (response.data.token) {
+      console.log("Response headers : ", response.headers);
+      console.log("Authorization Header:", response.headers["Authorization"]);
+      console.log("authorization Header:", response.headers["authorization"]);
+
+      if (token) {
         console.log("로그인 성공");
         if (onLoginSuccess) {
-          onLoginSuccess(response.data.token); //App.js로 토큰 전달해줌, 그러면 handleLoginSuccess함수에서 메인페이지로 리다이렉션 해줌
+          onLoginSuccess(token); //App.js로 토큰 전달해줌, 그러면 handleLoginSuccess함수에서 메인페이지로 리다이렉션 해줌
         } else {
           alert("onLoginSuccess is undefined");
         }
       } else {
-        console.log("로그인 실패");
-        alert(response.data.message);
+        console.log("로그인 실패 : 토큰을 찾을 수 없음.");
+        alert(response.data.message || "로그인 실패 : 토큰을 찾을 수 없음.");
       }
     } catch (error) {
       console.error("Error sending user info", error);
