@@ -64,6 +64,7 @@ function App() {
       //로그인 되어있는지 확인, 로그인 한 상태면
       getUserInfo() //사용자 정보 가져옴
         .then((data) => {
+          console.log("Fetched User Info : ", data);
           setUserInfo(data); //userInfo업데이트
         })
         .catch((error) => {

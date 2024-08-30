@@ -21,6 +21,9 @@ export async function getUserInfo() {
         },
       }
     );
+    console.log("API Response : ", response);
+    console.log("User Info from API Response : ", response.data);
+
     return response.data;
   } catch (error) {
     console.error("failed to fetch user info", error);
