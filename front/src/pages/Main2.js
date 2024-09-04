@@ -11,7 +11,7 @@ import HomeContent from "../components/HomeContent";
 import QnAContent from "../components/QnAContent";
 import { useState } from "react";
 
-const Main = () => {
+const Main = ({ isLoggedIn, userInfo }) => {
   const [selectedMenu, setSelectedMenu] = useState("홈");
 
   function handleMenuClick(menuName) {
@@ -32,6 +32,8 @@ const Main = () => {
     }
   }
 
+  console.log("userInfo in Main: ", userInfo);
+
   return (
     <div className={styles.main}>
       <main className={styles.frameParent}>
@@ -49,7 +51,7 @@ const Main = () => {
               </div>
             </div>
             <div className={styles.chatMessages}>
-              <LoginMessage />
+              <LoginMessage isLoggedIn={isLoggedIn} userInfo={userInfo} />
               <div className={styles.monthWeeksGroup}>
                 <div
                   className={styles.monthWeeks2}

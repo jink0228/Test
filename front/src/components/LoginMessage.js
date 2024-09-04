@@ -15,6 +15,8 @@ const LoginMessage = ({ className = "", isLoggedIn, userInfo }) => {
 
   let loginContent;
 
+  console.log("isLoggedIn : ", isLoggedIn);
+
   if (isLoggedIn) {
     loginContent = (
       <div className={[styles.loginMessage, className].join(" ")}>

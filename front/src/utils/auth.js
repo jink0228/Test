@@ -1,12 +1,14 @@
 import axios from "axios";
 
 export function isLoggedIn() {
-  return !!localStorage.getItem("token");
+  const token = localStorage.getItem("token");
+  console.log("Token in localStorage : ", token);
+  return !!token; //토큰 존재하면 true, 아니면 false반환
 }
 
 export async function getUserInfo() {
   let token = localStorage.getItem("token").trim();
-  console.log("Original token from localStorage : ", token);
+  console.log("Token : ", token);
 
   if (!token) {
     return null;
@@ -21,8 +23,22 @@ export async function getUserInfo() {
         },
       }
     );
-    console.log("API Response : ", response);
-    console.log("User Info from API Response : ", response.data);
+
+    console.log("Raw API Response:", response.data);
+
+    if (!response.data) {
+      console.error("No data received from server");
+      return null;
+    }
+
+    if (typeof response.data === "string") {
+      try {
+        return JSON.parse(response.data);
+      } catch (error) {
+        console.error("Failed to parse JSON : ", error);
+        return null;
+      }
+    }
 
     return response.data;
   } catch (error) {

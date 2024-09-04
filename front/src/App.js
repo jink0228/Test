@@ -59,13 +59,22 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
+    const loggedIn = isLoggedIn();
     //처음 메인 페이지 로드 시
-    if (isLoggedIn()) {
+    if (loggedIn) {
+      console.log(loggedIn);
       //로그인 되어있는지 확인, 로그인 한 상태면
       getUserInfo() //사용자 정보 가져옴
         .then((data) => {
-          console.log("Fetched User Info : ", data);
-          setUserInfo(data); //userInfo업데이트
+          if (typeof data === "object" && data !== null) {
+            setUserInfo(data); //userInfo업데이트
+          } else {
+            console.error(
+              "Expected userInfo to be an object but got:",
+              typeof data
+            );
+            setUserInfo(null);
+          }
         })
         .catch((error) => {
           console.error("Failed to fetch user info", error);
