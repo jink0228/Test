@@ -13,6 +13,10 @@ const LoginMessage = ({ className = "", isLoggedIn, userInfo }) => {
     navigate("/login");
   }
 
+  function onClickHandleMyWrote() {
+    navigate("/qnawrite");
+  }
+
   let loginContent;
 
   console.log("isLoggedIn : ", isLoggedIn);
@@ -29,7 +33,7 @@ const LoginMessage = ({ className = "", isLoggedIn, userInfo }) => {
             <p className={styles.p}>2트랙 : {userInfo.track2}</p>
           </div>
         </div>
-        <div className={styles.whatIwrote} onClick={handleMyWrote}>
+        <div className={styles.whatIwrote} onClick={onClickHandleMyWrote}>
           내가 쓴 글
         </div>
       </div>

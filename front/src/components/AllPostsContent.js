@@ -1,44 +1,63 @@
-/**
- * 전체 글 게시판(예진)
- */
-import React from "react";
+//전체 글 게시판(쓰는기능은 없고 읽기 전용)
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function AllPostsContent() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchAllPosts();
+  }, []);
+
+  async function fetchAllPosts() {
+    try {
+      let token = localStorage.getItem("token");
+      // 모든 게시판의 글들을 가져오는 API를 호출
+      const response = await axios.get(
+        "http://localhost:8080/api/board/posts",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setPosts(response.data.reverse()); // 전체 게시글을 가져온다
+    } catch (error) {
+      console.error("Error fetching all posts", error);
+    }
+  }
+
+  function onClickPreviousPage() {}
+
+  function onClickNextPage() {}
+
   return (
     <div>
       <header>
-        <h2>전체 글</h2>
+        <h2>전체 글 게시판</h2>
       </header>
+      <hr></hr>
       <section>
-        <article>
-          <h3>게시글 제목 1</h3>
-          <p>게시글 내용이 여기에 표시됩니다.</p>
-          <footer>
-            <span>작성자: 사용자1</span>
-            <span>작성일: 2024-07-30</span>
-          </footer>
-        </article>
-        <article>
-          <h3>게시글 제목 2</h3>
-          <p>게시글 내용이 여기에 표시됩니다.</p>
-          <footer>
-            <span>작성자: 사용자2</span>
-            <span>작성일: 2024-07-29</span>
-          </footer>
-        </article>
-        <article>
-          <h3>게시글 제목 3</h3>
-          <p>게시글 내용이 여기에 표시됩니다.</p>
-          <footer>
-            <span>작성자: 사용자3</span>
-            <span>작성일: 2024-07-28</span>
-          </footer>
-        </article>
-        {/* 추가적인 게시글들이 동일한 구조로 여기에 추가됩니다 */}
+        {posts.map((post) => (
+          <article key={post.id}>
+            <h3>{post.title}</h3>
+            <p>{post.content}</p>
+            <footer>
+              <span>작성자: {post.authorName}</span>
+              <br></br>
+              <span>작성일: {post.created_at}</span>
+              <br></br>
+              <span>게시판: {post.boardName}</span>{" "}
+              {/* 글이 속한 게시판 정보 */}
+            </footer>
+            <hr></hr>
+          </article>
+        ))}
       </section>
       <div>
-        <button>이전</button>
-        <button>다음</button>
+        <button onClick={onClickPreviousPage}>이전</button>
+        <span></span>
+        <button onClick={onClickNextPage}>다음</button>
       </div>
     </div>
   );

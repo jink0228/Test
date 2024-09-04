@@ -86,8 +86,6 @@ function App() {
 
   //
   function handleLoginSuccess(token) {
-    console.log("Token received : ", token);
-
     // Bearer 제거
     if (token.startsWith("Bearer ")) {
       token = token.substring(7); // 'Bearer ' 제거
@@ -97,7 +95,6 @@ function App() {
 
     getUserInfo()
       .then((data) => {
-        console.log("User info : ", data);
         //서버로부터 사용자 정보 가져옴
         setUserInfo(data); //가져온 정보를 userInfo에 저장
         navigate("/"); //로그인 성공 후 메인페이지로 리다이렉션

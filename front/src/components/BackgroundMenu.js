@@ -29,13 +29,8 @@ const BackgroundMenu = ({ className = "", onLoginSuccess }) => {
       let token =
         response.headers["Authorization"] || response.headers["authorization"];
 
-      console.log("Response headers : ", response.headers);
-      console.log("Authorization Header:", response.headers["Authorization"]);
-      console.log("authorization Header:", response.headers["authorization"]);
-
       if (token) {
         console.log("로그인 성공");
-        console.log("onLoginSucces : ", onLoginSuccess);
         if (onLoginSuccess) {
           onLoginSuccess(token); //App.js로 토큰 전달해줌, 그러면 handleLoginSuccess함수에서 메인페이지로 리다이렉션 해줌
         } else {

@@ -19,20 +19,18 @@ const Main = ({ isLoggedIn, userInfo }) => {
     setSelectedMenu(menuName);
   }
 
-  function renderContent() {
+  function renderContent(isLoggedIn) {
     switch (selectedMenu) {
       case "전체글":
         return <AllPostsContent />;
       case "홈":
         return <HomeContent />;
       case "QnA":
-        return <QnAContent />;
+        return <QnAContent isLoggedIn />;
       default:
         return <HomeContent />;
     }
   }
-
-  console.log("userInfo in Main: ", userInfo);
 
   return (
     <div className={styles.main}>
