@@ -10,6 +10,7 @@ import AllPostsContent from "../components/AllPostsContent";
 import HomeContent from "../components/HomeContent";
 import QnAContent from "../components/QnAContent";
 import { useState } from "react";
+import FindPeopleContent from "../components/FindPeopleContent";
 
 const Main = () => {
   const [selectedMenu, setSelectedMenu] = useState("홈");
@@ -27,6 +28,8 @@ const Main = () => {
         return <HomeContent />;
       case "QnA":
         return <QnAContent />;
+      case "구인게시판":
+        return <FindPeopleContent/>;
       default:
         return <HomeContent />;
     }
@@ -95,6 +98,21 @@ const Main = () => {
                   />
                   <div className={styles.frame}>
                     <div className={styles.coveloperChatbot}>QnA</div>
+                  </div>
+                </div>
+                <div 
+                  className={styles.calendar}
+                  onClick={()=> handleMenuClick("구인게시판")}
+                >
+                  {/*구인게시판*/}
+                  <div className={styles.monthWeeksChild} />
+                  <img
+                    className={styles.icroundFolderIcon}
+                    alt=""
+                    stc="/icsharpsearch1.svg"
+                  />
+                  <div className={styles.frame}>
+                    <div className={styles.coveloperChatbot}>구인게시판</div>
                   </div>
                 </div>
                 <div className={styles.calendar}>
