@@ -14,7 +14,7 @@ import { useState } from "react";
 const Main = ({ isLoggedIn, userInfo }) => {
   const [selectedMenu, setSelectedMenu] = useState("홈");
 
-  function handleMenuClick(menuName) {
+  function onClickMenu(menuName) {
     console.log(`${menuName} 클릭`);
     setSelectedMenu(menuName);
   }
@@ -53,7 +53,7 @@ const Main = ({ isLoggedIn, userInfo }) => {
               <div className={styles.monthWeeksGroup}>
                 <div
                   className={styles.monthWeeks2}
-                  onClick={() => handleMenuClick("전체글")}
+                  onClick={() => onClickMenu("전체글")}
                 >
                   {/**전체글 버튼 */}
                   <div className={styles.monthWeeksChild} />
@@ -69,7 +69,7 @@ const Main = ({ isLoggedIn, userInfo }) => {
                 </div>
                 <div
                   className={styles.navbarItems1}
-                  onClick={() => handleMenuClick("홈")}
+                  onClick={() => onClickMenu("홈")}
                 >
                   {/**홈 버튼 */}
                   <div className={styles.navbarItemsChild} />
@@ -84,7 +84,7 @@ const Main = ({ isLoggedIn, userInfo }) => {
                 </div>
                 <div
                   className={styles.calendar}
-                  onClick={() => handleMenuClick("QnA")}
+                  onClick={() => onClickMenu("QnA")}
                 >
                   {/*QnA게시판*/}
                   <div className={styles.monthWeeksChild} />
