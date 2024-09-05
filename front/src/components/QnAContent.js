@@ -54,7 +54,6 @@ function QnAContent({ isLoggedIn }) {
           questions.map((question) => (
             <article key={question.id}>
               <h3>{question.title}</h3>
-              <p>{question.content}</p>
               <footer>
                 <span>작성자: {question.authorName}</span>
                 <br></br>

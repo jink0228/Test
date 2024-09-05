@@ -1,8 +1,10 @@
 //전체 글 게시판(쓰는기능은 없고 읽기 전용)
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AllPostsContent() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -31,6 +33,11 @@ function AllPostsContent() {
 
   function onClickNextPage() {}
 
+  function onClickPost(postId) {
+    console.log("navigate detail");
+    navigate(`/posts/${postId}`);
+  }
+
   return (
     <div>
       <header>
@@ -39,9 +46,8 @@ function AllPostsContent() {
       <hr></hr>
       <section>
         {posts.map((post) => (
-          <article key={post.id}>
+          <article key={post.id} onClick={() => onClickPost(post.id)}>
             <h3>{post.title}</h3>
-            <p>{post.content}</p>
             <footer>
               <span>작성자: {post.authorName}</span>
               <br></br>
