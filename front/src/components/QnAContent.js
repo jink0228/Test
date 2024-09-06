@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import "./QnAContent.css";
 
 function QnAContent({ isLoggedIn }) {
   const [questions, setQuestions] = useState([]);
@@ -48,16 +49,20 @@ function QnAContent({ isLoggedIn }) {
   function onClickNextPage() {}
 
   return (
-    <div>
+    <div className="post-list-container">
       <header>
         <h2>QnA 게시판</h2>
         <button onClick={onClickWriteQnABtn}>글쓰기</button> {/* 글쓰기 버튼 */}
       </header>
       <hr></hr>
-      <section>
+      <section className="post-list-section">
         {questions.length > 0 ? (
           questions.map((question) => (
-            <article key={question.id} onClick={() => onClickPost(question.id)}>
+            <article
+              key={question.id}
+              onClick={() => onClickPost(question.id)}
+              className="post-item"
+            >
               <h3>{question.title}</h3>
               <footer>
                 <span>작성자: {question.authorName}</span>
@@ -71,7 +76,7 @@ function QnAContent({ isLoggedIn }) {
           <p>게시글이 없습니다.</p>
         )}
       </section>
-      <div>
+      <div className="pagination">
         <button onClick={onClickPreviousPage}>이전</button>
         <span></span>
         <button onClick={onClickNextPage}>다음</button>

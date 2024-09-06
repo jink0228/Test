@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "./PostDetail.css";
 
 function PostDetail() {
   const { id } = useParams(); // URL에서 게시물 ID를 가져옴
@@ -82,20 +83,22 @@ function PostDetail() {
   if (!post) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-      <footer>
-        <span>작성자: {post.authorName}</span>
-        <br />
-        <span>작성일: {post.createdAt}</span>
-      </footer>
+    <div className="post-detail-container">
+      <div className="post-content">
+        <h2>{post.title}</h2>
+        <p>{post.content}</p>
+        <footer>
+          <span>작성자: {post.authorName}</span>
+          <br />
+          <span>작성일: {post.createdAt}</span>
+        </footer>
+      </div>
 
-      <section>
+      <section className="comments-section">
         <h3>댓글</h3>
         {comments.length > 0 ? (
           comments.map((comment) => (
-            <div key={comment.id}>
+            <div key={comment.id} className="comment">
               <p>{comment.content}</p>
               <footer>
                 <span>작성자: {comment.authorName}</span>
@@ -108,7 +111,7 @@ function PostDetail() {
           <p>댓글이 없습니다.</p>
         )}
 
-        <div>
+        <div className="new-comment">
           <textarea
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}

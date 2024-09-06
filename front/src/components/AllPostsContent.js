@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./AllPostsContent.css";
 
 function AllPostsContent() {
   const navigate = useNavigate();
@@ -39,14 +40,18 @@ function AllPostsContent() {
   }
 
   return (
-    <div>
+    <div className="post-list-container">
       <header>
         <h2>전체 글 게시판</h2>
       </header>
       <hr></hr>
-      <section>
+      <section className="post-list-section">
         {posts.map((post) => (
-          <article key={post.id} onClick={() => onClickPost(post.id)}>
+          <article
+            key={post.id}
+            onClick={() => onClickPost(post.id)}
+            className="post-item"
+          >
             <h3>{post.title}</h3>
             <footer>
               <span>작성자: {post.authorName}</span>
@@ -57,7 +62,7 @@ function AllPostsContent() {
           </article>
         ))}
       </section>
-      <div>
+      <div className="pagination">
         <button onClick={onClickPreviousPage}>이전</button>
         <span></span>
         <button onClick={onClickNextPage}>다음</button>
