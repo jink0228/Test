@@ -38,6 +38,11 @@ function QnAContent({ isLoggedIn }) {
     }
   }
 
+  function onClickPost(questionId) {
+    console.log("navigate detail");
+    navigate(`/posts/${questionId}`);
+  }
+
   function onClickPreviousPage() {}
 
   function onClickNextPage() {}
@@ -52,12 +57,12 @@ function QnAContent({ isLoggedIn }) {
       <section>
         {questions.length > 0 ? (
           questions.map((question) => (
-            <article key={question.id}>
+            <article key={question.id} onClick={() => onClickPost(question.id)}>
               <h3>{question.title}</h3>
               <footer>
                 <span>작성자: {question.authorName}</span>
                 <br></br>
-                <span>작성일: {question.created_at}</span>
+                <span>작성일: {question.createdAt}</span>
               </footer>
               <hr></hr>
             </article>

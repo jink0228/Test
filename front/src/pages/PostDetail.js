@@ -17,7 +17,7 @@ function PostDetail() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:8080/api/board/posts/${id}`,
+        `http://localhost:8080/api/board/post/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -39,9 +39,7 @@ function PostDetail() {
       <footer>
         <span>작성자: {post.authorName}</span>
         <br />
-        <span>작성일: {post.created_at}</span>
-        <br />
-        <span>게시판: {post.boardName}</span>
+        <span>작성일: {post.createdAt}</span>
       </footer>
     </div>
   );

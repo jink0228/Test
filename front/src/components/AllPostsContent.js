@@ -51,10 +51,7 @@ function AllPostsContent() {
             <footer>
               <span>작성자: {post.authorName}</span>
               <br></br>
-              <span>작성일: {post.created_at}</span>
-              <br></br>
-              <span>게시판: {post.boardName}</span>{" "}
-              {/* 글이 속한 게시판 정보 */}
+              <span>작성일: {post.createdAt}</span>
             </footer>
             <hr></hr>
           </article>
