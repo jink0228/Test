@@ -15,27 +15,29 @@ import FindPeopleContent from "../components/FindPeopleContent";
 const Main = ({ isLoggedIn, userInfo }) => {
   const [selectedMenu, setSelectedMenu] = useState("홈");
 
-  function handleMenuClick(menuName) {
+  function onClickMenu(menuName) {
     console.log(`${menuName} 클릭`);
     setSelectedMenu(menuName);
   }
 
-  function renderContent() {
+  function renderContent(isLoggedIn) {
     switch (selectedMenu) {
       case "전체글":
         return <AllPostsContent />;
       case "홈":
         return <HomeContent />;
       case "QnA":
+<<<<<<< HEAD
         return <QnAContent />;
       case "구인게시판":
         return <FindPeopleContent/>;
+=======
+        return <QnAContent isLoggedIn />;
+>>>>>>> 2378436ec6093c5a2c7510cedc7ea2402074d648
       default:
         return <HomeContent />;
     }
   }
-
-  console.log("userInfo in Main: ", userInfo);
 
   return (
     <div className={styles.main}>
@@ -58,7 +60,7 @@ const Main = ({ isLoggedIn, userInfo }) => {
               <div className={styles.monthWeeksGroup}>
                 <div
                   className={styles.monthWeeks2}
-                  onClick={() => handleMenuClick("전체글")}
+                  onClick={() => onClickMenu("전체글")}
                 >
                   {/**전체글 버튼 */}
                   <div className={styles.monthWeeksChild} />
@@ -74,7 +76,7 @@ const Main = ({ isLoggedIn, userInfo }) => {
                 </div>
                 <div
                   className={styles.navbarItems1}
-                  onClick={() => handleMenuClick("홈")}
+                  onClick={() => onClickMenu("홈")}
                 >
                   {/**홈 버튼 */}
                   <div className={styles.navbarItemsChild} />
@@ -89,7 +91,7 @@ const Main = ({ isLoggedIn, userInfo }) => {
                 </div>
                 <div
                   className={styles.calendar}
-                  onClick={() => handleMenuClick("QnA")}
+                  onClick={() => onClickMenu("QnA")}
                 >
                   {/*QnA게시판*/}
                   <div className={styles.monthWeeksChild} />

@@ -12,6 +12,7 @@ import Join from "./pages/Join";
 import Main from "./pages/Main2";
 import WriteQnAPost from "./pages/QnAWrite";
 import WriteFindPeople from "./pages/FindPeopleWrite";
+import PostDetail from "./pages/PostDetail";
 import { getUserInfo, isLoggedIn, logout } from "./utils/auth";
 /**
  * getUserInfo() : 토큰제출하고, 사용자 정보 가져옴
@@ -86,8 +87,6 @@ function App() {
 
   //
   function handleLoginSuccess(token) {
-    console.log("Token received : ", token);
-
     // Bearer 제거
     if (token.startsWith("Bearer ")) {
       token = token.substring(7); // 'Bearer ' 제거
@@ -97,7 +96,6 @@ function App() {
 
     getUserInfo()
       .then((data) => {
-        console.log("User info : ", data);
         //서버로부터 사용자 정보 가져옴
         setUserInfo(data); //가져온 정보를 userInfo에 저장
         navigate("/"); //로그인 성공 후 메인페이지로 리다이렉션
@@ -120,6 +118,7 @@ function App() {
       />
       <Route path="/writeqna" element={<WriteQnAPost />} />
       <Route path="/writefindpeople" element={<WriteFindPeople />} />
+      <Route path="/posts/:id" element={<PostDetail />} />
     </Routes>
   );
 }

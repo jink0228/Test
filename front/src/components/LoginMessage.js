@@ -5,12 +5,24 @@ import { useCallback } from "react";
 import PropTypes from "prop-types";
 import styles from "./LoginMessage.module.css";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../utils/auth";
 
 const LoginMessage = ({ className = "", isLoggedIn, userInfo }) => {
   const navigate = useNavigate();
 
   function handleLoginBtn() {
     navigate("/login");
+  }
+
+  function onClickMyWrote() {
+    navigate("/qnawrite");
+  }
+
+  function onClickLogout() {
+    logout();
+    alert("로그아웃 완료");
+    navigate("/"); //메인페이지로 이동
+    window.location.reload(); // 페이지 새로고침
   }
 
   let loginContent;
@@ -29,7 +41,10 @@ const LoginMessage = ({ className = "", isLoggedIn, userInfo }) => {
             <p className={styles.p}>2트랙 : {userInfo.track2}</p>
           </div>
         </div>
-        <div className={styles.whatIwrote} onClick={handleMyWrote}>
+        <div className={styles.logoutBtn} onClick={onClickLogout}>
+          로그아웃
+        </div>
+        <div className={styles.whatIwrote} onClick={onClickMyWrote}>
           내가 쓴 글
         </div>
       </div>

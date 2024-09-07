@@ -2,13 +2,11 @@ import axios from "axios";
 
 export function isLoggedIn() {
   const token = localStorage.getItem("token");
-  console.log("Token in localStorage : ", token);
   return !!token; //토큰 존재하면 true, 아니면 false반환
 }
 
 export async function getUserInfo() {
   let token = localStorage.getItem("token").trim();
-  console.log("Token : ", token);
 
   if (!token) {
     return null;
@@ -23,8 +21,6 @@ export async function getUserInfo() {
         },
       }
     );
-
-    console.log("Raw API Response:", response.data);
 
     if (!response.data) {
       console.error("No data received from server");

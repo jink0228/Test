@@ -6,28 +6,44 @@ import { getUserInfo } from "../utils/auth";
 function WriteQnAPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [author, setAuthor] = useState("");
+  const [authorName, setAuthorName] = useState("");
+  const [upvoteCount, setUpvoteCount] = useState(0);
+  const [downvoteCount, setDownvoteCount] = useState(0);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchUser() {
       const userInfo = await getUserInfo();
       if (userInfo) {
-        setAuthor(userInfo.nickname);
+        console.log(userInfo);
+        setAuthorName(userInfo.nickname);
       }
     }
     fetchUser();
-  });
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
+    const token = localStorage.getItem("token");
+
     try {
-      const response = await axios.post("http://localhost:8080/api/posts", {
-        title,
-        content,
-        author,
-      });
+      const response = await axios.post(
+        "http://localhost:8080/api/board/post",
+        {
+          title,
+          content,
+          authorName: authorName,
+          upvoteCount,
+          downvoteCount,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.status === 201) {
         //백엔드는 성공적으로 저장하면 201 created를 반환함

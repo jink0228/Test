@@ -1,44 +1,71 @@
-/**
- * 전체 글 게시판(예진)
- */
-import React from "react";
+//전체 글 게시판(쓰는기능은 없고 읽기 전용)
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./AllPostsContent.css";
 
 function AllPostsContent() {
+  const navigate = useNavigate();
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchAllPosts();
+  }, []);
+
+  async function fetchAllPosts() {
+    try {
+      let token = localStorage.getItem("token");
+      // 모든 게시판의 글들을 가져오는 API를 호출
+      const response = await axios.get(
+        "http://localhost:8080/api/board/posts",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setPosts(response.data.reverse()); // 전체 게시글을 가져온다
+    } catch (error) {
+      console.error("Error fetching all posts", error);
+    }
+  }
+
+  function onClickPreviousPage() {}
+
+  function onClickNextPage() {}
+
+  function onClickPost(postId) {
+    console.log("navigate detail");
+    navigate(`/posts/${postId}`);
+  }
+
   return (
-    <div>
+    <div className="post-list-container">
       <header>
-        <h2>전체 글</h2>
+        <h2>전체 글 게시판</h2>
       </header>
-      <section>
-        <article>
-          <h3>게시글 제목 1</h3>
-          <p>게시글 내용이 여기에 표시됩니다.</p>
-          <footer>
-            <span>작성자: 사용자1</span>
-            <span>작성일: 2024-07-30</span>
-          </footer>
-        </article>
-        <article>
-          <h3>게시글 제목 2</h3>
-          <p>게시글 내용이 여기에 표시됩니다.</p>
-          <footer>
-            <span>작성자: 사용자2</span>
-            <span>작성일: 2024-07-29</span>
-          </footer>
-        </article>
-        <article>
-          <h3>게시글 제목 3</h3>
-          <p>게시글 내용이 여기에 표시됩니다.</p>
-          <footer>
-            <span>작성자: 사용자3</span>
-            <span>작성일: 2024-07-28</span>
-          </footer>
-        </article>
-        {/* 추가적인 게시글들이 동일한 구조로 여기에 추가됩니다 */}
+      <hr></hr>
+      <section className="post-list-section">
+        {posts.map((post) => (
+          <article
+            key={post.id}
+            onClick={() => onClickPost(post.id)}
+            className="post-item"
+          >
+            <h3>{post.title}</h3>
+            <footer>
+              <span>작성자: {post.authorName}</span>
+              <br></br>
+              <span>작성일: {post.createdAt}</span>
+            </footer>
+            <hr></hr>
+          </article>
+        ))}
       </section>
-      <div>
-        <button>이전</button>
-        <button>다음</button>
+      <div className="pagination">
+        <button onClick={onClickPreviousPage}>이전</button>
+        <span></span>
+        <button onClick={onClickNextPage}>다음</button>
       </div>
     </div>
   );

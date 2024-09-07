@@ -138,6 +138,9 @@
 .whatIwrote {
   cursor: pointer;
 }
+.logoutBtn {
+  cursor: pointer;
+}
 @media screen and (max-width: 450px) {
   .loginMessageParent {
     padding-left: var(--padding-xl);
