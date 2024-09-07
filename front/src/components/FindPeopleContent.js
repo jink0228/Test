@@ -17,7 +17,7 @@ function FindPeopleContent({ isLoggedIn }) {
 
   async function fetchQuestions(page) {
     try {
-      const response = await axios.get("http://localhost:8080/api/qna", {
+      const response = await axios.get("http://localhost:8080/api/qna", {  //추후 수정해야함
         params: {
           page: page,
           size: questionsPerPage,
@@ -44,7 +44,7 @@ function FindPeopleContent({ isLoggedIn }) {
 
   function handleWriteButtonClick() {
     if (1) {
-      navigate("/writeqna");
+      navigate("/writefindpeople");
     }
     /*
     if (isLoggedIn) {
@@ -60,7 +60,7 @@ function FindPeopleContent({ isLoggedIn }) {
   return (
     <div>
       <header>
-        <h2>QnA 게시판</h2>
+        <h2>구인 게시판</h2>
         <button onClick={handleWriteButtonClick}>글쓰기</button>{" "}
         {/* 글쓰기 버튼 */}
       </header>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getUserInfo } from "../utils/auth";
 
-function WriteQnAPost() {
+function WriteFindPeople() { 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("");
@@ -44,7 +44,7 @@ function WriteQnAPost() {
 
   return (
     <div>
-      <h2>QnA글쓰기</h2>
+      <h2>구인게시판 글쓰기</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">제목:</label>
@@ -55,6 +55,46 @@ function WriteQnAPost() {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
+        </div>
+        <div>
+          <label for="options">프로젝트 유형:</label>
+          <select id="options" onchange="showSelectedValue()">
+          <option value="option1">캡스톤</option>
+          <option value="option2">교내 대회</option>
+          <option value="option3">외부 대회</option>
+          <option value="option4">개인 프로젝트</option>
+          <option value="option5">기타</option>
+</select>
+        </div>
+        <div>
+          <h7>팀 인원 :</h7>
+          <input
+            type="number"
+            id="memberCount"
+            value="1"
+            min="1"
+            max="10"
+            ></input>
+        </div>
+        <div>
+          <h7>필요한 인원 :</h7>
+          <input
+            type="number"
+            id="memberCountNeed"
+            value="1"
+            min="1"
+            max="10"
+            ></input>
+        </div>
+        <div>
+          <h7>현재 인원:</h7>
+          <input
+            type="number"
+            id="memberCountNow"
+            value="1"
+            min="1"
+            max="10"
+            ></input>
         </div>
         <div>
           <label htmlFor="content">내용:</label>
@@ -71,4 +111,4 @@ function WriteQnAPost() {
   );
 }
 
-export default WriteQnAPost;
+export default WriteFindPeople;
