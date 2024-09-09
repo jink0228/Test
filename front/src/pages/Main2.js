@@ -27,17 +27,10 @@ const Main = ({ isLoggedIn, userInfo }) => {
       case "홈":
         return <HomeContent />;
       case "QnA":
-<<<<<<< HEAD
-<<<<<<< HEAD
         return <QnAContent />;
       case "구인게시판":
         return <FindPeopleContent/>;
-=======
         return <QnAContent isLoggedIn />;
->>>>>>> 2378436ec6093c5a2c7510cedc7ea2402074d648
-=======
-        return <QnAContent isLoggedIn />;
->>>>>>> 2378436ec6093c5a2c7510cedc7ea2402074d648
       default:
         return <HomeContent />;
     }
@@ -110,7 +103,7 @@ const Main = ({ isLoggedIn, userInfo }) => {
                 </div>
                 <div 
                   className={styles.calendar}
-                  onClick={()=> handleMenuClick("구인게시판")}
+                  onClick={()=> onClickMenu("구인게시판")}
                 >
                   {/*구인게시판*/}
                   <div className={styles.monthWeeksChild} />
