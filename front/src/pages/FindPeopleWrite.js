@@ -71,19 +71,9 @@ function WriteFindPeople() {
           <input
             type="number"
             id="memberCount"
-            value="1"
             min="1"
             max="10"
-            ></input>
-        </div>
-        <div>
-          <h7>필요한 인원 :</h7>
-          <input
-            type="number"
-            id="memberCountNeed"
-            value="1"
-            min="1"
-            max="10"
+            onChange={(e) => setMemberCountNow(e.target.value)}
             ></input>
         </div>
         <div>
@@ -91,9 +81,9 @@ function WriteFindPeople() {
           <input
             type="number"
             id="memberCountNow"
-            value="1"
             min="1"
             max="10"
+            onChange={(e) => setMemberCountNow(e.target.value)}
             ></input>
         </div>
         <div>
